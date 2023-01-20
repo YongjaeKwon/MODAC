@@ -11,6 +11,14 @@
   @apply text-3xl font-bold underline;
 } */
 
+* {
+  margin: 5px;
+}
+
 input {
+  border: 1px solid;
+}
+
+button {
   border: 1px solid;
 }

@@ -7,7 +7,6 @@ import GithubTest from "../views/GithubTest.vue";
 import GithubTest2 from "../views/GithubTest2.vue";
 import GithubTest3 from "../views/GithubTest3.vue";
 
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -40,6 +39,11 @@ const router = createRouter({
       path: "/commit/:user/:repo",
       name: "commit",
       component: GithubTest3,
+    },
+    {
+      path: "/test/",
+      name: "test",
+      component: TestView,
     },
   ],
 });

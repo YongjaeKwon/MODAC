@@ -1,19 +1,36 @@
 import httpApi from "./http";
 
-// 1단계 함수 구현
-const getTodoList = async (users_seq) => {
-  return await httpApi.get('/todo/list', {params: users_seq});
+export const postTodoListItem = async (usersSeq, categoriesSeq, title) => {
+  console.log(usersSeq, categoriesSeq, title);
+  return await httpApi.post("/todo", { usersSeq, categoriesSeq, title });
 };
 
-const getTodoListItem = async (users) => {
-  return await httpApi.get('/todo', {params: users_seq})
-}
+export const getTodoList = async (usersSeq) => {
+  return await httpApi.get("/todo/list", { params: usersSeq });
+};
 
-const 
+export const getTodoListItem = async (usersSeq) => {
+  return await httpApi.get("/todo", { params: { usersSeq } });
+};
 
-// 2단계. 함수를 객체로 모아서 export
-export const todoApi = {
-  getList: getTodoList,
-  getItem: getTodoListItem,
+export const putTodoListItem = async (
+  seq, // todo's seq
+  usersSeq,
+  categoriesSeq,
+  title,
+  status,
+  totalSecond
+) => {
+  return await httpApi.put("/todo", {
+    seq,
+    usersSeq,
+    categoriesSeq,
+    title,
+    status,
+    totalSecond,
+  });
+};
 
-}
+export const deleteTodoListItem = async (seq) => {
+  httpApi.delete("/todo", { seq });
+};
