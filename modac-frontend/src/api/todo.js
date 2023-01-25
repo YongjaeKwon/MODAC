@@ -1,16 +1,15 @@
 import httpApi from "./http";
 
-export const postTodoListItem = async (usersSeq, categoriesSeq, title) => {
-  console.log(usersSeq, categoriesSeq, title);
-  return await httpApi.post("/todo", { usersSeq, categoriesSeq, title });
+export const postTodoListItem = async (usersSeq, categoriesName, title) => {
+  return await httpApi.post("/todos", { usersSeq, categoriesName, title });
 };
 
 export const getTodoList = async (usersSeq) => {
-  return await httpApi.get("/todo/list", { params: usersSeq });
+  return await httpApi.get("/todos/", { params: { usersSeq } });
 };
 
 export const getTodoListItem = async (usersSeq) => {
-  return await httpApi.get("/todo", { params: { usersSeq } });
+  return await httpApi.get("/todos", { params: { usersSeq } });
 };
 
 export const putTodoListItem = async (
@@ -21,7 +20,7 @@ export const putTodoListItem = async (
   status,
   totalSecond
 ) => {
-  return await httpApi.put("/todo", {
+  return await httpApi.put("/todos", {
     seq,
     usersSeq,
     categoriesSeq,
@@ -32,5 +31,5 @@ export const putTodoListItem = async (
 };
 
 export const deleteTodoListItem = async (seq) => {
-  httpApi.delete("/todo", { seq });
+  httpApi.delete("/todos", { seq });
 };

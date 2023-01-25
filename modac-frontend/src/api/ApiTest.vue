@@ -5,25 +5,26 @@ import * as todoApi from "./todo";
 // 요청 더미 데이터
 // users_seq: any, categories_seq: any, title: any
 const usersSeq = ref(1);
-const categoriesSeq = ref(0); // null
-const title = `todo from ${usersSeq.value}, category: ${categoriesSeq.value}`;
+const categoriesName = ref("category1");
+const title = "SomeThing Todo4";
+// const title = `todo from ${usersSeq.value}, category: ${categoriesName.value}`;
 
 // 응답 받을 변수
 const responseData = ref({});
 
 const postListTestButtonClickHandler = async () => {
   console.log("postListTestButtonClickHandler 실행");
-  console.log(usersSeq.value, categoriesSeq.value, title);
+  // console.log(usersSeq.value, categoriesName.value, title);
   responseData.value = await todoApi.postTodoListItem(
     usersSeq.value,
-    categoriesSeq.value,
+    categoriesName.value,
     title
   );
-  console.log(responseData.value);
+  // console.log(responseData.value);
 };
 
 const getListTestButtonClickHandler = async () => {
-  responseData.value = await todoApi.getTodoList(usersSeq);
+  responseData.value = await todoApi.getTodoList(usersSeq.value);
 };
 
 const getListItemTestButtonClickHandler = () => {};
