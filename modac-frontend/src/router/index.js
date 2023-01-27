@@ -9,6 +9,7 @@ import GithubTest2 from "../views/GithubTest2.vue";
 import GithubTest2_2 from "../views/GithubTest2-2.vue";
 import GithubTest3 from "../views/GithubTest3.vue";
 import GithubTest4 from "../views/GithubTest4.vue";
+import RoomSettings from "../domains/Room/Settings/SettingList.vue";
 
 
 const router = createRouter({
@@ -18,6 +19,11 @@ const router = createRouter({
       path: "/",
       name: "Login",
       component: Login,
+    },
+    {
+      path: "/RoomSettings",
+      name: "RoomSettings",
+      component: RoomSettings,
     },
     {
       path: "/todolist",

@@ -5,6 +5,7 @@
       <RouterLink id="routerlink" to="/todoList">Todo List</RouterLink>
       <RouterLink id="routerlink" to="/studyRoom">Study Room</RouterLink>
       <RouterLink id="routerlink" to="/before">Github</RouterLink>
+      <RouterLink id="routerlink" to="/RoomSettings">RoomSettings</RouterLink>
     </ul>
   </nav>
 </div>

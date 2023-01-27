@@ -1,0 +1,19 @@
+.setting-box{
+  @apply container mx-auto shadow-lg rounded-lg
+}
+
+.setting-box-header{
+  @apply px-5 py-5 flex justify-between items-center bg-white border-b-2
+}
+
+.setting-box-body{
+  @apply flex flex-row justify-between bg-white
+}
+
+.setting-box-size1{
+  @apply w-full px-5 flex flex-col justify-between
+}
+
+.setting-box-size2{
+  @apply flex flex-col mt-5
+}
