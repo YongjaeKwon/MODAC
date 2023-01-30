@@ -7,13 +7,13 @@
       <RouterLink id="routerlink" to="/before">Github</RouterLink>
       <RouterLink id="routerlink" to="/login">Login</RouterLink>
       <RouterLink id="routerlink" to="/signup">SignUp</RouterLink>
+      <RouterLink id="routerlink" to="/music">MusicPlayer</RouterLink>
     </ul>
   </nav>
 </div>
 </template>
 
 <script setup>
-
 </script>
 
 <style lang="scss" scoped>
