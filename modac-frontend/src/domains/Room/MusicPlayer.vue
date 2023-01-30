@@ -26,6 +26,7 @@
   </div>
 </template>
 
+
 <script setup>
   const title = document.querySelector(".title");
   const prev = document.querySelector(".prev");
@@ -55,7 +56,7 @@
   }
 
   function pauseSong(){
-    song_Playing = flase;
+    song_Playing = false;
     audio.pause();
     playPause.classList.remove('active');
   }
@@ -86,7 +87,7 @@
     loadSong(songList[i]);
     playSong();
   }
-  prev.addEventListener("click", prevSong);
+  // prev.addEventListener("click", prevSong);
 
   // 다음 곡
   function nextSong(){
@@ -97,7 +98,7 @@
     loadSong(songList[i]);
     playSong();
   }
-  next.addEventListener("click", nextSong);
+  // next.addEventListener("click", nextSong);
 
 </script>
 
