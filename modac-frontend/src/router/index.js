@@ -11,6 +11,7 @@ import GithubTest2_2 from "../views/GithubTest2-2.vue";
 import GithubTest3 from "../views/GithubTest3.vue";
 import GithubTest4 from "../views/GithubTest4.vue";
 import ChatList from "../domains/Room/Chat/ChatList.vue";
+import Timer from "../domains/Room/MainTimer.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,6 +20,11 @@ const router = createRouter({
       path: "/login",
       name: "login",
       component: Login,
+    },
+    {
+      path: "/timer",
+      name: "timer",
+      component: Timer,
     },
     {
       path: "/signup",
