@@ -12,6 +12,7 @@ import GithubTest3 from "../views/GithubTest3.vue";
 import GithubTest4 from "../views/GithubTest4.vue";
 import ChatList from "../domains/Room/Chat/ChatList.vue";
 import MusicPlayer from "../domains/Room/MusicPlayer/MusicPlayer.vue";
+import TestMusicPlayer from "@/domains/Room/MusicPlayer/TestMusicPlayer.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
