@@ -3,6 +3,7 @@ import SideBarToggleButton from "@/components/SideBarToggleButton.vue";
 import LeftSideBar from "@/domains/Room/LeftSideBar.vue";
 import MainSection from "@/domains/Room/MainSection.vue";
 import RightSideBar from "@/domains/Room/RightSideBar.vue";
+import CampFire from "@/components/CampFire.vue";
 import Wrapper from "@/components/Wrapper.vue";
 import { useRoomStore } from "@/stores/room";
 import { storeToRefs } from "pinia";
@@ -24,6 +25,7 @@ const rightSideBarStyleState = computed(() =>
 </script>
 
 <template>
+  <CampFire/>
   <Wrapper :class="$style.study_room_wrapper_flex">
     <Wrapper
       :class="`${$style[leftSideBarStyleState]} ${$style.left_side_bar_wrapper} ${$style.side_bar_wrapper_flex}`"
