@@ -15,7 +15,7 @@ public class RoomRequest {
 
 	private Long usersSeq;
 
-	public Room toEntity(User host, ChatRoom chatRoom, String invitationCode){
+	public Room toEntity(User host, ChatRoom chatRoom, String invitationCode) {
 		return Room.builder()
 			.title(title)
 			.description(description)

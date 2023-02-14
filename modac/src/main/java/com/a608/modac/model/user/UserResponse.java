@@ -13,7 +13,7 @@ public class UserResponse {
 	private String email;
 	private Byte catSkin;
 	private String singleTheme;
-	private Long totalSecond;
+	private Integer totalSecond;
 	private String membershipLevel;
 	private Integer point;
 	private Integer maxPoint;

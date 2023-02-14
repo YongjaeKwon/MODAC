@@ -1,5 +1,7 @@
 package com.a608.modac.model.comment;
 
+import java.time.LocalDateTime;
+
 import com.a608.modac.model.article.Article;
 import com.a608.modac.model.user.User;
 
@@ -16,7 +18,8 @@ public class CommentRequest {
 		return Comment.builder()
 			.article(article)
 			.user(user)
-			.content(content)
+			.content(this.content)
+			.registeredTime(LocalDateTime.now())
 			.build();
 	}
 

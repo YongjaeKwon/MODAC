@@ -23,7 +23,7 @@ public class RoomResponse {
 	private final User host;
 	private final ChatRoom chatRoom;
 
-	public RoomResponse(final Room room){
+	public RoomResponse(final Room room) {
 		this.seq = room.getSeq();
 		this.title = room.getTitle();
 		this.description = room.getDescription();

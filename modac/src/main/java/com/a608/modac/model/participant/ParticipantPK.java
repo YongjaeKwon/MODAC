@@ -30,7 +30,7 @@ public class ParticipantPK implements Serializable {
 	private Long usersSeq;
 
 	@Builder
-	public ParticipantPK(final Room room, final Long usersSeq){
+	public ParticipantPK(final Room room, final Long usersSeq) {
 		this.room = room;
 		this.usersSeq = usersSeq;
 	}

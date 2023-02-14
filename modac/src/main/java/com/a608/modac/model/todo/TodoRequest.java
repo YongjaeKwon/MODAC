@@ -12,7 +12,7 @@ public class TodoRequest {
     private String categoriesName;
     private String title;
     private Byte status;
-    private String totalSecond;
+    private Integer totalSecond;
 
     public Todo toEntity(User user, Category category) {
         return Todo.builder()

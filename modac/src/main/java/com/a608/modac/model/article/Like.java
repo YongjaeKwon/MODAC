@@ -30,15 +30,11 @@ public class Like {
 	@JoinColumn(name = "users_seq")
 	private User user;
 
-
 	@Builder
 	public Like(Long seq, Article article, User user) {
 		this.seq = seq;
 		this.article = article;
 		this.user = user;
-	}
-
-	public Like() {
 	}
 
 }

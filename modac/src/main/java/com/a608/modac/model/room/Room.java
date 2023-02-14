@@ -44,15 +44,15 @@ public class Room {
 	private String title;
 	@Column(name = "description")
 	private String description;
-	@Column(name="max_size")
+	@Column(name = "max_size")
 	private Integer maxSize;
 	@Column(name = "current_size")
-	private int currentSize;
-	@Column(name="multi_theme")
+	private Integer currentSize;
+	@Column(name = "multi_theme")
 	private String multiTheme;
-	@Column(name="public_type")
+	@Column(name = "public_type")
 	private Integer publicType;
-	@Column(name="invitation_code")
+	@Column(name = "invitation_code")
 	private String invitationCode;
 
 	@JsonIgnore
@@ -60,7 +60,7 @@ public class Room {
 	private final List<Participant> participants = new ArrayList<>();
 
 	@ManyToOne
-	@JoinColumn(name="users_seq")
+	@JoinColumn(name = "users_seq")
 	private User host;
 
 	@OneToOne
@@ -68,8 +68,9 @@ public class Room {
 	private ChatRoom chatRoom;
 
 	@Builder
-	public Room(Long seq, String title, String description, Integer maxSize, int currentSize, String multiTheme, Integer publicType,
-		String invitationCode,Participant participant, User host, ChatRoom chatRoom) {
+	public Room(Long seq, String title, String description, Integer maxSize, Integer currentSize, String multiTheme,
+		Integer publicType,
+		String invitationCode, Participant participant, User host, ChatRoom chatRoom) {
 		this.seq = seq;
 		this.title = title;
 		this.description = description;
@@ -89,23 +90,22 @@ public class Room {
 		return participants.stream().map(Participant::getParticipant).collect(Collectors.toList());
 	}
 
-
-	public void updateRoom(final String title, final String description, final String multiTheme){
+	public void updateRoom(final String title, final String description, final String multiTheme) {
 		this.title = title;
 		this.description = description;
 		this.multiTheme = multiTheme;
 	}
 
-	public void updateCurrentSize(final int cnt){
+	public void updateCurrentSize(final int cnt) {
 		this.currentSize += cnt;
 	}
 
-	public void participateRoom(Participant participant){
+	public void participateRoom(Participant participant) {
 		updateCurrentSize(1);
 		this.participants.add(participant);
 	}
 
-	public void exitRoom(Participant participant){
+	public void exitRoom(Participant participant) {
 		updateCurrentSize(-1);
 		this.participants.remove(participant);
 	}

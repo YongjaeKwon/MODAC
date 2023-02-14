@@ -22,15 +22,18 @@ public class ArticleRequest {
 		this.content = content;
 	}
 
-	public Article toEntity(Todo todo, String filepath){
+	public Article toEntity(Todo todo, String filepath) {
 		return Article.builder()
 			.title(todo.getTitle())
 			.filepath(filepath)
-			.publicType(publicType)
+			.registeredTime(LocalDateTime.now())
+			.publicType(this.publicType)
+			.viewCount(0)
+			.likeCount(0)
+			.commentCount(0)
 			.totalSecond(todo.getTotalSecond())
 			.user(todo.getUser())
 			.category(todo.getCategory())
-			.registeredTime(LocalDateTime.now())
 			.build();
 	}
 }

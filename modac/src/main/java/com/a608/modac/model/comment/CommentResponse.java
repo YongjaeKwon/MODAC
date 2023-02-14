@@ -11,7 +11,7 @@ import lombok.Getter;
 public class CommentResponse {
 	private Long seq; // 댓글 번호
 	private String content; // 댓글 내용
-	private String registeredTime; // 댓글 작성 시간
+	private LocalDateTime registeredTime; // 댓글 작성 시간
 	private User user; // 댓글 작성자 객체
 
 	public CommentResponse(Comment comment) {

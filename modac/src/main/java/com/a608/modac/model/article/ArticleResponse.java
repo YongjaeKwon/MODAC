@@ -29,7 +29,7 @@ public class ArticleResponse {
 		private Integer viewCount;
 		private Integer likeCount;
 		private Integer commentCount;
-		private String totalSecond;
+		private Integer totalSecond;
 		private User user;
 		private String categoryName;
 

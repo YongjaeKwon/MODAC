@@ -17,6 +17,7 @@ import com.a608.modac.model.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
+
 import org.hibernate.annotations.DynamicInsert;
 
 @Getter
@@ -29,41 +30,43 @@ public class Article {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long seq;
 
-	@Column(name="title")
+	@Column(name = "title")
 	private String title;
 
-	@Column(name="filepath")
+	@Column(name = "filepath")
 	private String filepath;
 
-	@Column(name="registered_time")
+	@Column(name = "registered_time")
 	private LocalDateTime registeredTime;
 
-	@Column(name="public_type")
+	@Column(name = "public_type")
 	private Byte publicType;
 
-	@Column(name="view_count")
+	@Column(name = "view_count")
 	private Integer viewCount;
 
-	@Column(name="like_count")
+	@Column(name = "like_count")
 	private Integer likeCount;
 
-	@Column(name="comment_count")
+	@Column(name = "comment_count")
 	private Integer commentCount;
 
-	@Column(name="total_second")
-	private String totalSecond;
+	@Column(name = "total_second")
+	private Integer totalSecond;
 
 	@ManyToOne
-	@JoinColumn(name="users_seq")
+	@JoinColumn(name = "users_seq")
 	private User user;
 
 	@ManyToOne
-	@JoinColumn(name="categories_name")
+	@JoinColumn(name = "categories_name")
 	private Category category;
 
 	@Builder
-	public Article(final Long seq, final String title, final String filepath, final LocalDateTime registeredTime, final Byte publicType, final Integer viewCount,
-		final Integer likeCount, final Integer commentCount, final String totalSecond, final User user, final Category category) {
+	public Article(final Long seq, final String title, final String filepath, final LocalDateTime registeredTime,
+		final Byte publicType, final Integer viewCount,
+		final Integer likeCount, final Integer commentCount, final Integer totalSecond, final User user,
+		final Category category) {
 		this.seq = seq;
 		this.title = title;
 		this.filepath = filepath;
@@ -81,17 +84,16 @@ public class Article {
 	}
 
 	// 좋아요수 업데이트 (+1 or -1)
-	public void updateLikeCount(Integer cnt){
+	public void updateLikeCount(Integer cnt) {
 		this.likeCount += cnt;
 	}
 
-	public void updateCommentCount(Integer cnt){
+	public void updateCommentCount(Integer cnt) {
 		this.commentCount += cnt;
 	}
 
-	public void upViewCount(){
+	public void upViewCount() {
 		this.viewCount++;
 	}
-
 
 }

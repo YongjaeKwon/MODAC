@@ -40,14 +40,14 @@ public class Todo {
     private Byte status;
 
     @Column(name = "total_second")
-    private String totalSecond;
+    private Integer totalSecond;
 
     @ManyToOne
     @JoinColumn(name = "categories_name")
     private Category category;
 
     @Builder
-    public Todo(final Long seq, final User user, final String title, final Byte status, final String totalSecond, final Category category) {
+    public Todo(final Long seq, final User user, final String title, final Byte status, final Integer totalSecond, final Category category) {
         this.seq = seq;
         this.user = user;
         this.title = title;
@@ -59,7 +59,7 @@ public class Todo {
     public Todo() {
     }
 
-    public void updateTodo(final String title, final Byte status, final String totalSecond, final Category category){
+    public void updateTodo(final String title, final Byte status, final Integer totalSecond, final Category category){
         this.title = title;
         this.status = status;
         this.totalSecond = totalSecond;

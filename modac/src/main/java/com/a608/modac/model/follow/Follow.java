@@ -22,24 +22,30 @@ import lombok.ToString;
 @ToString
 @Builder
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "followings")
 public class Follow {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long seq;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long seq;
 
-    @ManyToOne
-    @JoinColumn(name = "from_seq")
-    private User fromUser;
+	@ManyToOne
+	@JoinColumn(name = "from_seq")
+	private User fromUser;
 
-    @ManyToOne
-    @JoinColumn(name = "to_seq")
-    private User toUser;
+	@ManyToOne
+	@JoinColumn(name = "to_seq")
+	private User toUser;
 
-    @ManyToOne
-    @JoinColumn(name = "chat_rooms_seq")
-    private ChatRoom chatRoom;
+	@ManyToOne
+	@JoinColumn(name = "chat_rooms_seq")
+	private ChatRoom chatRoom;
 
+	@Builder
+	public Follow(final Long seq, final User fromUser, final User toUser, final ChatRoom chatRoom) {
+		this.seq = seq;
+		this.fromUser = fromUser;
+		this.toUser = toUser;
+		this.chatRoom = chatRoom;
+	}
 }

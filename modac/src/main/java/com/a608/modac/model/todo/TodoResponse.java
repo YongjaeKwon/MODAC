@@ -8,7 +8,7 @@ public class TodoResponse {
     private Long seq;
     private String title;
     private Byte status;
-    private String totalSecond;
+    private Integer totalSecond;
     private String categoriesName;
     @Builder
     public TodoResponse(Todo todo){
