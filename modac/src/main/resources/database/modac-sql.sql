@@ -10,7 +10,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema modac
 -- -----------------------------------------------------
-drop database `modac`;
+
 -- -----------------------------------------------------
 -- Schema modac
 -- -----------------------------------------------------
@@ -26,12 +26,12 @@ CREATE TABLE IF NOT EXISTS `modac`.`users` (
   `id` VARCHAR(20) NOT NULL,
   `nickname` VARCHAR(20) NOT NULL,
   `password` VARCHAR(20) NOT NULL,
-  `cat_skin` INT NULL,
-  `single_theme` VARCHAR(45) NULL,
-  `total_second` INT NULL DEFAULT 0,
-  `membership_level` VARCHAR(20) NULL DEFAULT 'BRONZE_LV1',
-  `point` INT NULL DEFAULT 0,
-  `max_point` INT NULL DEFAULT 50,
+  `cat_skin` INT NOT NULL,
+  `single_theme` VARCHAR(45) NOT NULL,
+  `total_second` INT NOT NULL,
+  `membership_level` VARCHAR(20) NOT NULL,
+  `point` INT NOT NULL,
+  `max_point` INT NOT NULL,
   PRIMARY KEY (`seq`))
 ENGINE = InnoDB;
 
@@ -40,9 +40,10 @@ ENGINE = InnoDB;
 -- Table `modac`.`categories`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `modac`.`categories` (
-  `name` VARCHAR(30) NOT NULL DEFAULT '기타',
+  `seq` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(30) NOT NULL,
   `template_filepath` VARCHAR(150) NOT NULL,
-  PRIMARY KEY (`name`))
+  PRIMARY KEY (`seq`))
 ENGINE = InnoDB;
 
 
@@ -53,20 +54,20 @@ CREATE TABLE IF NOT EXISTS `modac`.`todos` (
   `seq` INT NOT NULL AUTO_INCREMENT,
   `users_seq` INT NOT NULL,
   `title` VARCHAR(100) NOT NULL,
-  `status` INT NOT NULL DEFAULT 0,
-  `total_second` VARCHAR(15) NULL DEFAULT '0',
-  `categories_name` VARCHAR(30) NOT NULL,
+  `status` INT NOT NULL,
+  `total_second` INT NOT NULL,
+  `categories_seq` INT NOT NULL,
   PRIMARY KEY (`seq`),
   INDEX `fk_todos_users_idx` (`users_seq` ASC) VISIBLE,
-  INDEX `fk_todos_categories1_idx` (`categories_name` ASC) VISIBLE,
+  INDEX `fk_todos_categories1_idx` (`categories_seq` ASC) VISIBLE,
   CONSTRAINT `fk_todos_users`
     FOREIGN KEY (`users_seq`)
     REFERENCES `modac`.`users` (`seq`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_todos_categories1`
-    FOREIGN KEY (`categories_name`)
-    REFERENCES `modac`.`categories` (`name`)
+    FOREIGN KEY (`categories_seq`)
+    REFERENCES `modac`.`categories` (`seq`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -79,25 +80,25 @@ CREATE TABLE IF NOT EXISTS `modac`.`articles` (
   `seq` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(50) NOT NULL,
   `filepath` VARCHAR(150) NULL,
-  `registered_time` DATETIME NULL DEFAULT now(),
+  `registered_time` DATETIME NOT NULL,
   `public_type` INT NOT NULL,
-  `view_count` INT NULL DEFAULT 0,
-  `like_count` INT NULL DEFAULT 0,
-  `comment_count` INT NULL DEFAULT 0,
+  `view_count` INT NOT NULL,
+  `like_count` INT NOT NULL,
+  `comment_count` INT NOT NULL,
   `total_second` INT NOT NULL,
   `users_seq` INT NOT NULL,
-  `categories_name` VARCHAR(30) NOT NULL,
+  `categories_seq` INT NOT NULL,
   PRIMARY KEY (`seq`),
   INDEX `fk_articles_users1_idx` (`users_seq` ASC) VISIBLE,
-  INDEX `fk_articles_categories1_idx` (`categories_name` ASC) VISIBLE,
+  INDEX `fk_articles_categories1_idx` (`categories_seq` ASC) VISIBLE,
   CONSTRAINT `fk_articles_users1`
     FOREIGN KEY (`users_seq`)
     REFERENCES `modac`.`users` (`seq`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_articles_categories1`
-    FOREIGN KEY (`categories_name`)
-    REFERENCES `modac`.`categories` (`name`)
+    FOREIGN KEY (`categories_seq`)
+    REFERENCES `modac`.`categories` (`seq`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -132,7 +133,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `modac`.`comments` (
   `seq` INT NOT NULL AUTO_INCREMENT,
   `content` VARCHAR(100) NOT NULL,
-  `registered_time` DATETIME NULL DEFAULT now(),
+  `registered_time` DATETIME NOT NULL,
   `articles_seq` INT NOT NULL,
   `users_seq` INT NOT NULL,
   PRIMARY KEY (`seq`),
@@ -169,8 +170,8 @@ CREATE TABLE IF NOT EXISTS `modac`.`rooms` (
   `seq` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(30) NOT NULL,
   `description` VARCHAR(100) NULL,
-  `max_size` INT NULL DEFAULT 6,
-  `current_size` INT NULL DEFAULT 1,
+  `max_size` INT NOT NULL,
+  `current_size` INT NOT NULL,
   `multi_theme` VARCHAR(30) NULL,
   `public_type` INT NOT NULL,
   `invitation_code` VARCHAR(20) NULL,
@@ -298,11 +299,11 @@ CREATE TABLE IF NOT EXISTS `modac`.`participants` (
   `rooms_seq` INT NOT NULL,
   `users_seq` INT NOT NULL,
   `nickname` VARCHAR(20) NULL,
-  `status` INT NULL,
-  `attend` INT NULL,
-  `cat_skin` INT NULL,
+  `status` INT NOT NULL,
+  `attend` INT NOT NULL,
+  `cat_skin` INT NOT NULL,
   `categories_name` VARCHAR(30) NULL,
-  `registered_time` DATETIME NULL,
+  `registered_time` DATETIME NOT NULL,
   PRIMARY KEY (`rooms_seq`, `users_seq`),
   INDEX `fk_participants_rooms1_idx` (`rooms_seq` ASC) VISIBLE,
   CONSTRAINT `fk_participants_rooms1`
@@ -313,11 +314,11 @@ CREATE TABLE IF NOT EXISTS `modac`.`participants` (
 ENGINE = InnoDB;
 
 -- 더미데이터 삽입
-INSERT INTO `modac`.`categories` values ('알고리즘', 'algo test path');
-INSERT INTO `modac`.`categories` values ('CS', 'CS test path');
-INSERT INTO `modac`.`categories` values ('개발', '개발 test path');
-INSERT INTO `modac`.`categories` values ('기획', '기획 test path');
-INSERT INTO `modac`.`categories` values ('기타','기타 test path');
+INSERT INTO `modac`.`categories` values (0, '알고리즘', 'markdown_templates/알고리즘.md');
+INSERT INTO `modac`.`categories` values (0, 'CS', 'markdown_templates/CS.md');
+INSERT INTO `modac`.`categories` values (0, '개발', 'markdown_templates/개발.md');
+INSERT INTO `modac`.`categories` values (0, '면접', 'markdown_templates/면접.md');
+INSERT INTO `modac`.`categories` values (0, '공통','markdown_templates/공통.md');
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
