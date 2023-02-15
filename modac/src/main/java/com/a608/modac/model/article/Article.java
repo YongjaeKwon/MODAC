@@ -51,19 +51,19 @@ public class Article {
 	private Integer commentCount;
 
 	@Column(name="total_second")
-	private String totalSecond;
+	private Integer totalSecond;
 
 	@ManyToOne
 	@JoinColumn(name="users_seq")
 	private User user;
 
 	@ManyToOne
-	@JoinColumn(name="categories_name")
+	@JoinColumn(name="categories_seq")
 	private Category category;
 
 	@Builder
 	public Article(final Long seq, final String title, final String filepath, final LocalDateTime registeredTime, final Byte publicType, final Integer viewCount,
-		final Integer likeCount, final Integer commentCount, final String totalSecond, final User user, final Category category) {
+		final Integer likeCount, final Integer commentCount, final Integer totalSecond, final User user, final Category category) {
 		this.seq = seq;
 		this.title = title;
 		this.filepath = filepath;

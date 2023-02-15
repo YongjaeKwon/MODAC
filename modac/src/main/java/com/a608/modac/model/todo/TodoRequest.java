@@ -12,7 +12,7 @@ public class TodoRequest {
     private String categoriesName;
     private String title;
     private Byte status;
-    private String totalSecond;
+    private Integer totalSecond;
 
     public Todo toEntity(User user, Category category) {
         return Todo.builder()
@@ -20,8 +20,8 @@ public class TodoRequest {
                 .user(user)
                 .category(category)
                 .title(title)
-                .status(status)
-                .totalSecond(totalSecond)
+                .status((byte)0)
+                .totalSecond(0)
                 .build();
     }
 

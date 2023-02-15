@@ -20,6 +20,7 @@ public class RoomRequest {
 			.title(title)
 			.description(description)
 			.maxSize(maxSize)
+			.currentSize(1)
 			.multiTheme(multiTheme)
 			.publicType(publicType)
 			.invitationCode(invitationCode)
