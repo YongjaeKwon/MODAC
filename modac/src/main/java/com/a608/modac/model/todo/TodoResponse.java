@@ -1,5 +1,7 @@
 package com.a608.modac.model.todo;
 
+import com.a608.modac.model.category.Category;
+
 import lombok.Builder;
 import lombok.Getter;
 
@@ -10,6 +12,8 @@ public class TodoResponse {
     private Byte status;
     private Integer totalSecond;
     private String categoriesName;
+    private String templateContent;
+
     @Builder
     public TodoResponse(Todo todo){
         this.seq = todo.getSeq();
@@ -19,4 +23,7 @@ public class TodoResponse {
         this.categoriesName = todo.getCategory().getName();
     }
 
+    public void setTemplateContent(String templateContent){
+        this.templateContent = templateContent;
+    }
 }

@@ -20,8 +20,8 @@ public class TodoRequest {
                 .user(user)
                 .category(category)
                 .title(title)
-                .status(status)
-                .totalSecond(totalSecond)
+                .status((byte)0)
+                .totalSecond(0)
                 .build();
     }
 

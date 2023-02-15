@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.a608.modac.model.category.Category;
 
 @Repository
-public interface CategoryRepository extends JpaRepository<Category, String> {
-
+public interface CategoryRepository extends JpaRepository<Category, Long> {
+	Category findByName(String name);
 }

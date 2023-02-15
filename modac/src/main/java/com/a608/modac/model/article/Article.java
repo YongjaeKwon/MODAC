@@ -59,7 +59,7 @@ public class Article {
 	private User user;
 
 	@ManyToOne
-	@JoinColumn(name = "categories_name")
+	@JoinColumn(name = "categories_seq")
 	private Category category;
 
 	@Builder

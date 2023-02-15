@@ -2,6 +2,8 @@ package com.a608.modac.model.category;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -22,6 +24,10 @@ import lombok.ToString;
 public class Category {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long seq;
+
+	@Column(name = "name")
 	private String name;
 
 	@Column(name = "template_filepath")

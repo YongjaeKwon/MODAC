@@ -43,19 +43,6 @@ public class S3ServiceImpl implements S3Service {
 	@Value("${cloud.aws.s3.bucket}")
 	private String bucket;
 
-	// @Value("${cloud.aws.s3.credentials.accessKey}")
-	// private String accessKey;
-
-	// @Value("${cloud.aws.s3.credentials.secretKey}")
-	// private String secretKey;
-	// private final AWSCredentials awsCredentials = new BasicAWSCredentials(accessKey, secretKey);
-	// @Value("${cloud.aws.region.static}")
-	// private String region;
-	// private final AmazonS3 amazonS3Client = AmazonS3ClientBuilder.standard()
-	// 	.withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
-	// 	.withRegion(region)
-	// 	.build();
-
 	// String 타입의 게시글 내용을 전달받아 MultipartFile 객체 생성
 	@Override
 	public MultipartFile createMultipartFile(String content) {

@@ -43,7 +43,7 @@ public class Todo {
     private Integer totalSecond;
 
     @ManyToOne
-    @JoinColumn(name = "categories_name")
+    @JoinColumn(name = "categories_seq")
     private Category category;
 
     @Builder
