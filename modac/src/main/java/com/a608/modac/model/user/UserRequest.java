@@ -20,6 +20,11 @@ public class UserRequest {
 			.email(email)
 			.password(password)
 			.catSkin(skin)
+			.singleTheme("기본")
+			.totalSecond(0)
+			.membershipLevel("BRONZE_LV1")
+			.point(0)
+			.maxPoint(50)
 			.build();
 	}
 }

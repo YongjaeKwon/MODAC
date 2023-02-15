@@ -65,8 +65,8 @@ public class User implements UserDetails {
 	private Integer maxPoint;
 
 	@Builder
-	public User(Long seq, String id, String nickname, String email, String password, Byte catSkin, String singleTheme,
-		Integer totalSecond) {
+	public User(Long seq, String id, String nickname, String email, String password, Byte catSkin,
+		String singleTheme, Integer totalSecond, String membershipLevel, Integer point, Integer maxPoint) {
 		this.seq = seq;
 		this.id = id;
 		this.nickname = nickname;
@@ -75,6 +75,9 @@ public class User implements UserDetails {
 		this.catSkin = catSkin;
 		this.singleTheme = singleTheme;
 		this.totalSecond = totalSecond;
+		this.membershipLevel = membershipLevel;
+		this.point = point;
+		this.maxPoint = maxPoint;
 	}
 
 	public void updateUser(String nickname, String email) {
