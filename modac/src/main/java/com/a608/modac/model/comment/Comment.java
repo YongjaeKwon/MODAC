@@ -16,9 +16,11 @@ import com.a608.modac.model.user.User;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @Entity
+@NoArgsConstructor
 @Table(name = "comments")
 public class Comment {
 	@Id
